@@ -14,6 +14,7 @@ import { ZodError } from "zod";
 import { getServerAuthSession } from "@/server/auth";
 import { db } from "@/server/db";
 import { createClient } from "@/lib/supabase/server";
+import { uncachedValidateRequest } from "@/lib/auth/validate-request";
 
 /**
  * 1. CONTEXT
@@ -28,13 +29,12 @@ import { createClient } from "@/lib/supabase/server";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers; }) => {
-  const client = createClient();
-
-  const { data, error } = await client.auth.getUser();
+  const { session, user } = await uncachedValidateRequest();
 
   return {
     db,
-    user: data?.user,
+    session,
+    user,
     ...opts,
   };
 };

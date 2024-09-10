@@ -1,6 +1,13 @@
 import LoginForm from './form';
+import { redirect } from "next/navigation";
+import { validateRequest } from "@/lib/auth/validate-request";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const { user } = await validateRequest();
+  if (user) {
+    redirect('/admin');
+  }
+
   return (
     <div className="h-screen justify-center md:items-center flex flex-col w-full gap-2 ">
 

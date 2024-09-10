@@ -7,17 +7,16 @@ import { toast } from "sonner";
 import { api } from "@/trpc/react";
 
 import { useRouter } from 'next/navigation';
-import { login } from "@/app/login/actions";
 
 const passwordValidation = new RegExp(
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
 );
 
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const router = useRouter();
 
-  const loginApi = api.auth.login.useMutation({
+  const login = api.auth.register.useMutation({
     onSuccess: () => {
       toast.success("Logged in successfully");
       router.push("/admin");
@@ -30,15 +29,11 @@ export default function LoginForm() {
   return (
     <Form
       onSubmit={async (values) => {
-        try {
-          await login(values);
-        } catch (error) {
-          toast.error("Something went wrong");
-          console.error(error);
-        }
+        await login.mutateAsync(values);
       }}
-      defaultValues={{ email: "", password: "" }}
+      defaultValues={{ email: "", password: "", name: "" }}
       schema={z.object({
+        name: z.string().min(2).max(100),
         email: z.string().email(),
         password: z.string().min(8).max(100).regex(passwordValidation, "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character"),
       })}
@@ -46,6 +41,12 @@ export default function LoginForm() {
     >
       {({ Field }) => (
         <FormLayout className="w-full">
+          <Field
+            name="name"
+            label="Name"
+            type="text"
+            rules={{ required: true }}
+          />
           <Field
             name="email"
             label="Email"
@@ -58,7 +59,7 @@ export default function LoginForm() {
             type="password"
             rules={{ required: true }}
           />
-          <SubmitButton size="lg">Sign In</SubmitButton>
+          <SubmitButton size="lg">Register</SubmitButton>
         </FormLayout>
       )}
     </Form>

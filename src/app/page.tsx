@@ -35,8 +35,8 @@ const Navigation = () => {
         <Link href="/posts" className="text-lg font-semibold">
           Posts
         </Link>
-        <Link href="/profile" className="text-lg font-semibold">
-          Profile
+        <Link href="/events" className="text-lg font-semibold">
+          Events
         </Link>
       </div>
     </nav >
@@ -48,7 +48,9 @@ const Hero = () => {
     <section className="flex lg:flex-row flex-col items-center justify-center w-full gap-9 max-w-7xl px-3">
       <div className="flex flex-col items-center justify-center lg:w-2/3">
         <h1 className="md:text-left text-center font-display font-bold tracking-[-0.02em] drop-shadow-sm text-6xl md:text-7xl">Caring for those who care first</h1>
-        <p className="mt-4 md:text-left text-center text-lg w-full">The best health care in the world</p>
+        <p className="mt-4 md:text-left text-center text-lg w-full">
+          We provide the tools and resources to help you care for your little ones. Our mission is to make your motherhood easier and more enjoyable.
+        </p>
       </div>
       <div>
         <Image src="/images/meeting3.jpeg" alt="Hero" width={800} height={200} className="rounded-lg" />

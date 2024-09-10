@@ -57,11 +57,11 @@ model Post {
 }
 
 model Session {
-  id           String   @id @default(uuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @default(uuid())
+  userId    String 
+  expiresAt DateTime
+
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
 }
 
 enum Role {
@@ -74,6 +74,7 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
+  hashedPassword String?
   role          Role      @default(USER)
   image         String?
   profile       File?     @relation(name: "ProfileImage")
