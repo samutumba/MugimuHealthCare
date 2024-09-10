@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LatestPost } from "@/app/_components/post";
+import { LatestPosts } from "@/app/_components/post";
 import { getServerAuthSession } from "@/server/auth";
 import { api, HydrateClient } from "@/trpc/server";
 import { HeaderTitle } from "./_components/hero";
@@ -23,7 +23,7 @@ export default async function Home() {
   );
 }
 
-const Navigation = () => {
+export const Navigation = () => {
   return (
     <nav className="flex items-center justify-between w-full max-w-7xl mx-auto my-4">
       <Link href="/" className="text-lg font-semibold">
@@ -72,77 +72,10 @@ const Posts = () => {
             View our latest blog posts
           </h2>
           <p className="mt-1 text-gray-600 dark:text-neutral-400">
-            See how game-changing companies are making the most of every engagement
-            with Preline.
+            Read up on our online resources and tips for new moms.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <a className="group block rounded-xl focus:outline-none" href="#">
-            <div className="aspect-w-16 aspect-h-9">
-              <img
-                className="w-full max-h-48 object-cover rounded-xl"
-                src="https://images.unsplash.com/photo-1668869713519-9bcbb0da7171?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80"
-                alt="Blog Image"
-              />
-            </div>
-            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-primary group-focus:text-primary dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
-              Unity’s inside sales team drives 80% of its revenue with Preline.
-            </h3>
-            <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
-              September 12, 2022
-            </p>
-          </a>
-
-          <a className="group block rounded-xl focus:outline-none" href="#">
-            <div className="aspect-w-16 aspect-h-9">
-              <img
-                className="w-full max-h-48 object-cover rounded-xl"
-                src="https://images.unsplash.com/photo-1668584054035-f5ba7d426401?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80"
-                alt="Blog Image"
-              />
-            </div>
-            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-primary group-focus:text-primary dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
-              Living Spaces creates a unified experience across the customer
-              journey.
-            </h3>
-            <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
-              September 12, 2022
-            </p>
-          </a>
-
-          <a className="group block rounded-xl focus:outline-none" href="#">
-            <div className="aspect-w-16 aspect-h-9">
-              <img
-                className="w-full max-h-48 object-cover rounded-xl"
-                src="https://images.unsplash.com/photo-1668863699009-1e3b4118675d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80"
-                alt="Blog Image"
-              />
-            </div>
-            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-primary group-focus:text-primary dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
-              Atlassian powers sales and support at scale with Preline.
-            </h3>
-            <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
-              September 12, 2022
-            </p>
-          </a>
-
-          <a className="group block rounded-xl focus:outline-none" href="#">
-            <div className="aspect-w-16 aspect-h-9">
-              <img
-                className="w-full max-h-48 object-cover rounded-xl"
-                src="https://images.unsplash.com/photo-1668584054131-d5721c515211?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80"
-                alt="Blog Image"
-              />
-            </div>
-            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-primary group-focus:text-primary dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
-              Everything you need to know about Preline Pro.
-            </h3>
-            <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
-              September 12, 2022
-            </p>
-          </a>
-
-        </div>
+        <LatestPosts />
       </div>
 
     </>
