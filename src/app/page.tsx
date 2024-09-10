@@ -4,6 +4,9 @@ import { getServerAuthSession } from "@/server/auth";
 import { api, HydrateClient } from "@/trpc/server";
 import { HeaderTitle } from "./_components/hero";
 import Image from "next/image";
+import { SubscriptionToNewsletter } from "./_components/subscription";
+import { ContactUs } from "./_components/contact-us";
+
 export default async function Home() {
 
   return (
@@ -14,6 +17,7 @@ export default async function Home() {
         <AsFeaturedIn />
         <Posts />
         <SubscriptionToNewsletter />
+        <ContactUs />
       </main>
     </HydrateClient>
   );
@@ -32,11 +36,11 @@ const Navigation = () => {
         <Link href="/about" className="text-lg font-semibold">
           About
         </Link>
-        <Link href="/posts" className="text-lg font-semibold">
+        <Link href="/#posts" className="text-lg font-semibold">
           Posts
         </Link>
-        <Link href="/events" className="text-lg font-semibold">
-          Events
+        <Link href="/#contact-us" className="text-lg font-semibold">
+          Contact Us
         </Link>
       </div>
     </nav >
@@ -62,7 +66,7 @@ const Hero = () => {
 const Posts = () => {
   return (
     <>
-      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div id="posts" className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div className="max-w-2xl mb-10">
           <h2 className="text-4xl font-bold md:text-5xl md:leading-tight dark:text-white">
             View our latest blog posts
@@ -81,7 +85,7 @@ const Posts = () => {
                 alt="Blog Image"
               />
             </div>
-            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 group-focus:text-blue-600 dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
+            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-primary group-focus:text-primary dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
               Unity’s inside sales team drives 80% of its revenue with Preline.
             </h3>
             <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
@@ -97,7 +101,7 @@ const Posts = () => {
                 alt="Blog Image"
               />
             </div>
-            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 group-focus:text-blue-600 dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
+            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-primary group-focus:text-primary dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
               Living Spaces creates a unified experience across the customer
               journey.
             </h3>
@@ -114,7 +118,7 @@ const Posts = () => {
                 alt="Blog Image"
               />
             </div>
-            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 group-focus:text-blue-600 dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
+            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-primary group-focus:text-primary dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
               Atlassian powers sales and support at scale with Preline.
             </h3>
             <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
@@ -130,7 +134,7 @@ const Posts = () => {
                 alt="Blog Image"
               />
             </div>
-            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 group-focus:text-blue-600 dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
+            <h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-primary group-focus:text-primary dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white">
               Everything you need to know about Preline Pro.
             </h3>
             <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
@@ -149,7 +153,7 @@ const Posts = () => {
 const AsFeaturedIn = () => {
   return (<>
     {/* Clients */}
-    <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div id="featured-in" className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       {/* Title */}
       <div className="w-2/3 sm:w-1/2 lg:w-1/3 mx-auto text-center mb-6">
         <h2 className="text-gray-600 dark:text-neutral-400">
@@ -244,43 +248,5 @@ const Footer = () => {
         <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
       </a>
     </footer>
-  );
-};
-
-
-const SubscriptionToNewsletter = () => {
-  return (<>
-    <div className="max-w-6xl py-10 px-4 sm:px-6 lg:px-8 lg:py-16 mx-auto">
-      <div className="max-w-xl text-center mx-auto">
-        <div className="mb-5">
-          <h2 className="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white">
-            Sign up to our newsletter
-          </h2>
-        </div>
-        <form>
-          <div className="mt-5 lg:mt-8 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-            <div className="w-full">
-              <label htmlFor="hero-input" className="sr-only">
-                Search
-              </label>
-              <input
-                type="text"
-                id="hero-input"
-                name="hero-input"
-                className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                placeholder="Enter your email"
-              />
-            </div>
-            <a
-              className="w-full sm:w-auto whitespace-nowrap py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-              href="#"
-            >
-              Subscribe
-            </a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </>
   );
 };
