@@ -4,6 +4,7 @@ import { Form } from "@/components/forms";
 import { SubmitButton, FormLayout } from "@saas-ui/forms";
 import { z } from "zod";
 import { toast } from "sonner";
+import { contactFormResponse } from "./actions";
 
 export function ContactUs() {
   return (
@@ -21,7 +22,7 @@ export function ContactUs() {
           <Form
             defaultValues={{ phone: "", name: "", email: "", message: "" }}
             onSubmit={async (values) => {
-              console.log(values);
+              await contactFormResponse(values);
               toast.success("Thank you we will get back to you soon!");
             }}
             className="w-full "

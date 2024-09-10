@@ -7,10 +7,7 @@ import { Interweave } from 'interweave';
 //import { EditPost } from "./edit";
 
 export default async function PostsPage({ params }: { params: { slug: string; }; }) {
-  const { user } = await validateRequest();
-  if (!user) {
-    redirect('/login');
-  }
+
   const post = await db.post.findFirst({
     where: {
       id: params.slug,

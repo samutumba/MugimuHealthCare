@@ -4,6 +4,7 @@ import { Form } from "@/components/forms";
 import { SubmitButton, FormLayout } from "@saas-ui/forms";
 import { z } from "zod";
 import { toast } from "sonner";
+import { addSubscriber } from "./actions";
 
 export const SubscriptionToNewsletter = () => {
   return (<>
@@ -21,7 +22,7 @@ export const SubscriptionToNewsletter = () => {
           <Form
             defaultValues={{ email: "" }}
             onSubmit={async (values) => {
-              console.log(values);
+              await addSubscriber(values.email);
               toast.success("Thank you for subscribing!");
             }}
             className="w-full md:min-w-44"

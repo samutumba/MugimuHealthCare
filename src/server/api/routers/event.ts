@@ -32,7 +32,6 @@ export const eventRouter = createTRPCRouter({
       location: z.string()
     }))
     .mutation(async ({ ctx, input }) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const event = await ctx.db.event.create({
         data: {
           name: input.name,
