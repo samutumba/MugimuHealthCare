@@ -22,14 +22,11 @@ const Navigation = () => {
         <Image src="/mugimu.png" alt="Logo" width={80} height={80} />
       </Link>
       <div className="flex items-center justify-end gap-4">
-        <Link href="/" className="text-lg font-semibold">
+        <Link href="/admin" className="text-lg font-semibold">
           Dashboard
         </Link>
-        <Link href="/about" className="text-lg font-semibold">
-          Pages
-        </Link>
-        <Link href="/posts" className="text-lg font-semibold">
-          Events
+        <Link href="/admin/posts" className="text-lg font-semibold">
+          Posts
         </Link>
       </div>
     </nav >

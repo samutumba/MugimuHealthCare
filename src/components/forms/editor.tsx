@@ -9,6 +9,8 @@ import { EditorProvider, useCurrentEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import React from 'react';
 import { useFormContext } from "@saas-ui/react";
+import { IconButton } from "@chakra-ui/react";
+import { FaceIcon, ImageIcon, FontBoldIcon, FontItalicIcon, StrikethroughIcon, ListBulletIcon, BorderSolidIcon, ResetIcon, ReloadIcon } from '@radix-ui/react-icons';
 
 const MenuBar = () => {
   const { editor } = useCurrentEditor();
@@ -18,9 +20,11 @@ const MenuBar = () => {
   }
 
   return (
-    <div className="control-group">
-      <div className="button-group">
-        <button
+    <div className="bg-transparent">
+      <div className="IconButton-group bg-background">
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={
             !editor.can()
@@ -31,9 +35,11 @@ const MenuBar = () => {
           }
           className={editor.isActive('bold') ? 'is-active' : ''}
         >
-          Bold
-        </button>
-        <button
+          <FontBoldIcon />
+        </IconButton>
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={
             !editor.can()
@@ -44,9 +50,11 @@ const MenuBar = () => {
           }
           className={editor.isActive('italic') ? 'is-active' : ''}
         >
-          Italic
-        </button>
-        <button
+          <FontItalicIcon />
+        </IconButton>
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={
             !editor.can()
@@ -57,100 +65,109 @@ const MenuBar = () => {
           }
           className={editor.isActive('strike') ? 'is-active' : ''}
         >
-          Strike
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleCode().run()}
-          disabled={
-            !editor.can()
-              .chain()
-              .focus()
-              .toggleCode()
-              .run()
-          }
-          className={editor.isActive('code') ? 'is-active' : ''}
-        >
-          Code
-        </button>
-        <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
+          <StrikethroughIcon />
+        </IconButton>
+        {/* <IconButton
+          aria-label='command'
+          onClick={() => editor.chain().focus().unsetAllMarks().run()}>
           Clear marks
-        </button>
-        <button onClick={() => editor.chain().focus().clearNodes().run()}>
+        </IconButton>
+        <IconButton
+          aria-label='command'
+          onClick={() => editor.chain().focus().clearNodes().run()}>
           Clear nodes
-        </button>
-        <button
+        </IconButton> */}
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().setParagraph().run()}
           className={editor.isActive('paragraph') ? 'is-active' : ''}
         >
-          Paragraph
-        </button>
-        <button
+          P
+        </IconButton>
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
         >
           H1
-        </button>
-        <button
+        </IconButton>
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
           className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
         >
           H2
-        </button>
-        <button
+        </IconButton>
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
           className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
         >
           H3
-        </button>
-        <button
+        </IconButton>
+        {/* <IconButton
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
           className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
         >
           H4
-        </button>
-        <button
+        </IconButton>
+        <IconButton
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
           className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
         >
           H5
-        </button>
-        <button
+        </IconButton>
+        <IconButton
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
           className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
         >
           H6
-        </button>
-        <button
+        </IconButton> */}
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={editor.isActive('bulletList') ? 'is-active' : ''}
         >
-          Bullet list
-        </button>
-        <button
+          <ListBulletIcon />
+        </IconButton>
+        {/* <IconButton
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={editor.isActive('orderedList') ? 'is-active' : ''}
         >
           Ordered list
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          className={editor.isActive('codeBlock') ? 'is-active' : ''}
-        >
-          Code block
-        </button>
-        <button
+        </IconButton> */}
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={editor.isActive('blockquote') ? 'is-active' : ''}
         >
           Blockquote
-        </button>
-        <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
-          Horizontal rule
-        </button>
-        <button onClick={() => editor.chain().focus().setHardBreak().run()}>
+        </IconButton>
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
+          onClick={() => editor.chain().focus().setHorizontalRule().run()}>
+          <BorderSolidIcon />
+        </IconButton>
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
+          onClick={() => editor.chain().focus().setHardBreak().run()}>
           Hard break
-        </button>
-        <button
+        </IconButton>
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().undo().run()}
           disabled={
             !editor.can()
@@ -160,9 +177,11 @@ const MenuBar = () => {
               .run()
           }
         >
-          Undo
-        </button>
-        <button
+          <ResetIcon />
+        </IconButton>
+        <IconButton
+          colorScheme='gray'
+          aria-label='command'
           onClick={() => editor.chain().focus().redo().run()}
           disabled={
             !editor.can()
@@ -172,8 +191,8 @@ const MenuBar = () => {
               .run()
           }
         >
-          Redo
-        </button>
+          <ReloadIcon />
+        </IconButton>
       </div>
     </div>
   );
@@ -204,12 +223,14 @@ export const Editor: React.FC = React.forwardRef<any, any>((props, ref) => {
     setValue(props.name, content);
   }, [content]);
 
-  return (
+  return (<div ref={ref} className="editor border border-gray-500 p-0.5 rounded-md">
     <EditorProvider slotBefore={<MenuBar />} extensions={extensions} content={content} onUpdate={(editor) => {
       // console.log('content updated', content);
       const html = editor.editor.getHTML();
       setContent(html);
-    }}></EditorProvider>
+    }}
+
+    ></EditorProvider></div>
   );
 });
 

@@ -66,6 +66,14 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .editor input {
+    @apply border-none focus:border-none ring-0 focus:ring-0 hover:border-none hover:ring-0 !important;
+  }
+
+  .editor .ProseMirror {
+    @apply border-0 focus:border-0 p-7 focus:border-none ring-0 focus:ring-0 hover:border-none hover:ring-0 !important;
+  }
 }
 
 * {
