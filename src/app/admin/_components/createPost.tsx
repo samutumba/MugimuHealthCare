@@ -40,6 +40,7 @@ export const CreatePost = () => {
           name: z.string().min(6, "Title too short").max(100),
         })}
         colorScheme="blue"
+
       >
         {({ Field }) => (
           <FormLayout colorScheme="blue" className="flex flex-col md:min-w-44 gap-4 w-full">

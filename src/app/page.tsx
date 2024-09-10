@@ -120,15 +120,15 @@ const AsFeaturedIn = () => {
   );
 };
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <>
       {/* ========== FOOTER ========== */}
-      <footer className="relative overflow-hidden bg-orange-900">
+      <footer className="relative overflow-hidden bg-orange-900 w-full py-4 sm:px-6 lg:px-8 lg:py-8 mx-auto ">
         <svg
           className="absolute -bottom-20 start-1/2 w-[1900px] transform -translate-x-1/2"
-          width={2745}
-          height={488}
+          width={1445}
+          height={388}
           viewBox="0 0 2745 488"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -214,9 +214,9 @@ const Footer = () => {
             stroke="currentColor"
           />
         </svg>
-        <div className="relative z-10">
-          <div className="w-full max-w-5xl px-4 xl:px-0 py-10 lg:pt-16 mx-auto">
-            <div className="inline-flex items-center">
+        <div className="relative z-10 bg-transparent">
+          <div className="w-full max-w-5xl px-4 xl:px-0 py-10 lg:pt-16 mx-auto bg-transparent">
+            <div className="inline-flex items-center bg-transparent">
               <Image src="/mugimu.png" alt="Logo" width={70} height={70} />
               {/* End Logo */}
               <div className="border-s border-orange-700 ps-5 ms-5">

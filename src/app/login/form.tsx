@@ -58,7 +58,7 @@ export default function LoginForm() {
             type="password"
             rules={{ required: true }}
           />
-          <SubmitButton size="lg">Sign In</SubmitButton>
+          <SubmitButton colorScheme="blue">Sign In</SubmitButton>
         </FormLayout>
       )}
     </Form>

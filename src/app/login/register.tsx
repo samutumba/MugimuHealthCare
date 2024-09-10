@@ -59,7 +59,7 @@ export default function RegisterForm() {
             type="password"
             rules={{ required: true }}
           />
-          <SubmitButton size="lg">Register</SubmitButton>
+          <SubmitButton colorScheme="blue">Register</SubmitButton>
         </FormLayout>
       )}
     </Form>
