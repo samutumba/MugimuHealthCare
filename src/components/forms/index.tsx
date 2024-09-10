@@ -1,7 +1,11 @@
 // form.tsx
 import {
   createZodForm,
+  createZodStepForm,
+  createZodFormDialog
 } from '@saas-ui/forms/zod';
+import { Editor } from './editor';
+import { createField } from '@saas-ui/forms';
 
 // zod
 // import {createZodForm} from '@saas-ui/forms/zod'
@@ -15,16 +19,24 @@ import {
 //   })
 // );
 
-// const MyCustomControlledField = createField(
-//   React.forwardRef((props, ref) => {
-//     return <ReactSelect ref={ref} {...props} />;
-//   }),
-//   {
-//     isControlled: true,
-//   }
-// );
+const EditorField = createField(Editor,
+  {
+    isControlled: true,
+  }
+);
+
+
+
+const fields = {
+  editor: EditorField,
+};
 
 export const Form = createZodForm({
-  fields: {
-  },
+  fields,
 });
+
+export const StepForm = createZodStepForm({
+  fields
+});
+
+export const FormDialog = createZodFormDialog(Form);

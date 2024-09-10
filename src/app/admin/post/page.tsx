@@ -1,11 +1,10 @@
+import { validateRequest } from "@/lib/auth/validate-request";
 import { createClient } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
 
 export default async function PostsPage() {
-  const supabase = createClient();
-
-  const { data, error } = await supabase.auth.getUser();
-  if (error ?? data?.user) {
+  const { user } = await validateRequest();
+  if (!user) {
     redirect('/login');
   }
 
